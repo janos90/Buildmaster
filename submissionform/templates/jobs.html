@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Jobs{% endblock %}
+{% block content %}
+    <h1>Jobs</h1>
+    {% if user.is_authenticated %}
+
+        <ul>
+            {%  for job in object_list %}
+                <li>
+                    <a href="{% url 'job-detail' job.pk %}">
+                        {{  job.name }}
+                    </a>
+                    - {{ job.rep.user.first_name }} {{ job.rep.user.last_name }}
+                    - <a href="{% url 'job-update' job.pk %}" class="btn btn-secondary">Edit</a>
+                    - <a href="{% url 'job-delete' job.pk %}" class="btn btn-secondary">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You shouldn't be here...</p>
+    {% endif %}
+{% endblock %}

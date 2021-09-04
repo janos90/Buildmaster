@@ -1,0 +1,18 @@
+{% block title %}Remove {{ job.name }}{% endblock %}
+
+{% block content %}
+    <h1>Remove Job</h1>
+    {% if user.is_authenticated %}
+
+        <form method="post">
+            {% csrf_token %}
+            <strong>
+                Are you Sure you want to remove {{ job.name }}?
+            </strong>
+            <button>Remove Job</button>
+            <button>Cancel</button>
+        </form>
+    {% else %}
+        <h2>You need to log in to view this page</h2>
+    {% endif %}
+{% endblock %}
