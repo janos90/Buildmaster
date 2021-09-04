@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 from django.urls import reverse
 
-from members.models import Supplier
+from members.models import Supplier, Rep
 
 
 class Job(models.Model):
@@ -27,9 +27,10 @@ class Job(models.Model):
     client = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
     mobile = models.CharField(max_length=255)
-    rep = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    rep = models.ForeignKey(Rep, on_delete=models.CASCADE)
     logged_date = models.DateField()
     client_address = models.TextField()
+
 
     # Detailer info
     name = models.CharField(max_length=255)
@@ -42,8 +43,8 @@ class Job(models.Model):
     email_vip = models.BooleanField()
     email_jason = models.BooleanField()
     email_to = models.EmailField()
-
     suppliers = models.ManyToManyField(Supplier)
+
 
     WINDZONES = [
         (0, 'NONE'),
@@ -54,7 +55,6 @@ class Job(models.Model):
         (5, 'EXTRA_HIGH'),
     ]
     wind_zone = models.IntegerField(
-        max_length=1,
         choices=WINDZONES,
         default=0
     )
@@ -68,7 +68,6 @@ class Job(models.Model):
     ]
 
     corrosion_zone = models.IntegerField(
-        max_length=1,
         choices=CORROSION_ZONES,
         default=0
     )

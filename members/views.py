@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from members.forms import RepForm, PasswordChangingForm, EditUserForm, SignUpForm, SupplierForm
 from members.models import Rep, Supplier
 from submissionform.models import Job
 

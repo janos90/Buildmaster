@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -20,6 +21,7 @@ class Rep(models.Model):
         verbose_name="User",
     )
     phone = models.CharField(max_length=255)
+    bio = RichTextField(blank=True, null=True)
     entity = models.ForeignKey(Entity, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -33,6 +35,7 @@ class Supplier(models.Model):
         verbose_name="User",
     )
     phone = models.CharField(max_length=255)
+    bio = RichTextField(blank=True, null=True)
     entity = models.ForeignKey(Entity, on_delete=models.CASCADE)
 
     def __str__(self):
