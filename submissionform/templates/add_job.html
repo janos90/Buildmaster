@@ -3,12 +3,578 @@
 {% block title %}Add Activity{% endblock %}
 
 {% block content %}
-    <h1>Add Job</h1>
+    <h1 class="text-center">Add Job</h1>
     {% if user.is_authenticated %}
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button>Add Job</button>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p style="padding: 10px">
+                            <img src="https://www.thomsonsitm.co.nz/themes/ThomsonsITM/images/logo.png"
+                                 style="background-color: #000000; padding: 20px;">
+                            <br>
+                            <br>Thomsons Timbers Supplies Limited
+                        </p>
+                    </div>
+                    <div class="col">
+                        <h4 style="color: red; text-align: left; padding-left: 9px">Office Use only:</h4>
+
+                        <div class="fieldWrapper">
+                            {{ form.frame_truss_margin.errors }}
+                            <label for="{{ form.frame_truss_margin.id_for_label }}">Frame/Trusses:</label>
+                            {{ form.frame_truss_margin }}
+                        </div>
+
+                        <div class="fieldWrapper">
+                            {{ form.discount_group.errors }}
+                            <label for="{{ form.discount_group.id_for_label }}">Discount Group:</label>
+                            {{ form.discount_group }}
+                        </div>
+
+                        <div class="fieldWrapper">
+                            {{ form.reason.errors }}
+                            <label for="{{ form.reason.id_for_label }}">Reason:</label>
+                            {{ form.reason }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3 class="text-center">Estimate Request</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="container">
+                            <div class="row">
+                                <header class="text-center">Client</header>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="fieldWrapper">
+                                        {{ form.client_name.errors }}
+                                        <label for="{{ form.client_name.id_for_label }}">Name:</label>
+                                        {{ form.client_name }}
+                                    </div>
+
+                                    <div class="fieldWrapper">
+                                        {{ form.client_phone.errors }}
+                                        <label for="{{ form.client_phone.id_for_label }}">Phone:</label>
+                                        {{ form.client_phone }}
+                                    </div>
+
+                                    <div class="fieldWrapper">
+                                        {{ form.client_mobile.errors }}
+                                        <label for="{{ form.client_mobile.id_for_label }}">Mobile:</label>
+                                        {{ form.client_mobile }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="fieldWrapper">
+                                        {{ form.rep.errors }}
+                                        <label for="{{ form.rep.id_for_label }}">Rep:</label>
+                                        {{ form.rep }}
+                                    </div>
+                                    <div class="fieldWrapper">
+                                        {{ form.logged_date.errors }}
+                                        <label for="{{ form.logged_date.id_for_label }}">Logged date:</label>
+                                        {{ form.logged_date }}
+                                    </div>
+                                    <div class="fieldWrapper">
+                                        {{ form.client_email.errors }}
+                                        <label for="{{ form.client_email.id_for_label }}">Email:</label>
+                                        {{ form.client_email }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="fieldWrapper">
+                                        {{ form.client_address.errors }}
+                                        <label for="{{ form.client_address.id_for_label }}">Address:</label>
+                                        {{ form.client_address }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <header class="text-center">
+                                            Contact info for detailers questions
+                                        </header>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="fieldWrapper">
+                                                {{ form.detailer_name.errors }}
+                                                <label for="{{ form.detailer_name.id_for_label }}">Name:</label>
+                                                {{ form.detailer_name }}
+                                            </div>
+
+                                        </div>
+                                        <div class="col">
+                                            <div class="fieldWrapper">
+                                                {{ form.detailer_contact_number.errors }}
+                                                <label for="{{ form.detailer_contact_number.id_for_label }}">Contact
+                                                    Number:</label>
+                                                {{ form.detailer_contact_number }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <header class="text-center">
+                                            Job Location
+                                        </header>
+                                    </div>
+                                    <div class="row">
+                                        <div class="fieldWrapper">
+                                            {{ form.job_location.errors }}
+                                            <label for="{{ form.job_location.id_for_label }}">Location:</label>
+                                            {{ form.job_location }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+
+                            <header class="text-center">Job</header>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="fieldWrapper">
+                                    {{ form.job_name.errors }}
+                                    <label for="{{ form.job_name.id_for_label }}">Job Name:</label>
+                                    {{ form.job_name }}
+                                </div>
+                                <div class="fieldWrapper">
+                                    {{ form.job_company.errors }}
+                                    <label for="{{ form.job_company.id_for_label }}">Company:</label>
+                                    {{ form.job_company }}
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="fieldWrapper">
+                                    {{ form.pre_nail_date.errors }}
+                                    <label for="{{ form.pre_nail_date.id_for_label }}">Est Pre-nail Date:</label>
+                                    {{ form.pre_nail_date }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="fieldWrapper">
+                                {{ form.site_address.errors }}
+                                <label for="{{ form.site_address.id_for_label }}">Site Address:</label>
+                                {{ form.site_address }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="fieldWrapper">
+                                    {{ form.email_skip.errors }}
+                                    <label for="{{ form.email_skip.id_for_label }}">Email Skip</label>
+                                    {{ form.email_skip }}
+                                </div>
+
+                                <div class="fieldWrapper">
+                                    {{ form.email_arie.errors }}
+                                    <label for="{{ form.email_arie.id_for_label }}">Email Arie</label>
+                                    {{ form.email_arie }}
+                                </div>
+
+                                <div class="fieldWrapper">
+                                    {{ form.email_luci.errors }}
+                                    <label for="{{ form.email_luci.id_for_label }}">Email Luci:</label>
+                                    {{ form.email_luci }}
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="fieldWrapper">
+                                    {{ form.email_vip.errors }}
+                                    <label for="{{ form.email_vip.id_for_label }}">Email VIP</label>
+                                    {{ form.email_vip }}
+                                </div>
+                                <div class="fieldWrapper">
+                                    {{ form.email_jason.errors }}
+                                    <label for="{{ form.email_jason.id_for_label }}">Email Jason</label>
+                                    {{ form.email_jason }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="fieldWrapper">
+                                {{ form.email_to.errors }}
+                                <label for="{{ form.email_to.id_for_label }}">Email To</label>
+                                {{ form.email_to }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h4 class="text-center">Tick the items below required to be estimated</h4>
+                </div>
+                <div class="row">
+                    <div class="col">
+
+
+                        <div class="fieldWrapper">
+                            {{ form.truss_layout_ps1_only.errors }}
+                            <label for="{{ form.truss_layout_ps1_only.id_for_label }}">Truss Layout, PS1 only</label>
+                            {{ form.truss_layout_ps1_only }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.full_buildable_layouts.errors }}
+                            <label for="{{ form.full_buildable_layouts.id_for_label }}">Full Buildable Layouts</label>
+                            {{ form.full_buildable_layouts }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.detailing.errors }}
+                            <label for="{{ form.detailing.id_for_label }}">Detailing</label>
+                            {{ form.detailing }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.steel_reinforcing.errors }}
+                            <label for="{{ form.steel_reinforcing.id_for_label }}">Steel Reinforcing</label>
+                            {{ form.steel_reinforcing }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.pre_bent_r_steel.errors }}
+                            <label for="{{ form.pre_bent_r_steel.id_for_label }}">Pre-Bent R/Steel</label>
+                            {{ form.pre_bent_r_steel }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.rib_raft.errors }}
+                            <label for="{{ form.rib_raft.id_for_label }}">Rib-raft</label>
+                            {{ form.rib_raft }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.masonry.errors }}
+                            <label for="{{ form.masonry.id_for_label }}">Masonry</label>
+                            {{ form.masonry }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.concrete.errors }}
+                            <label for="{{ form.concrete.id_for_label }}">Concrete</label>
+                            {{ form.concrete }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.pre_nail.errors }}
+                            <label for="{{ form.pre_nail.id_for_label }}">Prenail</label>
+                            {{ form.pre_nail }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.trusses.errors }}
+                            <label for="{{ form.trusses.id_for_label }}">Trusses</label>
+                            {{ form.trusses }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.rafters.errors }}
+                            <label for="{{ form.rafters.id_for_label }}">Rafters</label>
+                            {{ form.rafters }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.roof_pack.errors }}
+                            <label for="{{ form.roof_pack.id_for_label }}">Roof Pack</label>
+                            {{ form.roof_pack }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.random.errors }}
+                            <label for="{{ form.random.id_for_label }}">Random</label>
+                            {{ form.random }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.sub_floor.errors }}
+                            <label for="{{ form.sub_floor.id_for_label }}">Sub-floor</label>
+                            {{ form.sub_floor }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.mid_floor.errors }}
+                            <label for="{{ form.mid_floor.id_for_label }}">Mid-floor</label>
+                            {{ form.mid_floor }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.deck.errors }}
+                            <label for="{{ form.deck.id_for_label }}">Deck</label>
+                            {{ form.deck }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.j_frame.errors }}
+                            <label for="{{ form.j_frame.id_for_label }}">J-Frame</label>
+                            {{ form.j_frame }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.cladding.errors }}
+                            <label for="{{ form.cladding.id_for_label }}">Cladding</label>
+                            {{ form.cladding }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.insulation_only.errors }}
+                            <label for="{{ form.insulation_only.id_for_label }}">Insulation Only</label>
+                            {{ form.insulation_only }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.insulation_installed.errors }}
+                            <label for="{{ form.insulation_installed.id_for_label }}">Insulation Installed</label>
+                            {{ form.insulation_installed }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.plasterboard.errors }}
+                            <label for="{{ form.plasterboard.id_for_label }}">Plasterboard</label>
+                            {{ form.plasterboard }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.plasterboard_dts.errors }}
+                            <label for="{{ form.plasterboard_dts.id_for_label }}">Plasterboard D.T.S</label>
+                            {{ form.plasterboard_dts }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.internal_linings.errors }}
+                            <label for="{{ form.internal_linings.id_for_label }}">Internal Linings</label>
+                            {{ form.internal_linings }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.internal_doors.errors }}
+                            <label for="{{ form.internal_doors.id_for_label }}">Internal Doors</label>
+                            {{ form.internal_doors }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.timber_fascia.errors }}
+                            <label for="{{ form.timber_fascia.id_for_label }}">Timber Fascia</label>
+                            {{ form.timber_fascia }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.marley_gutter_dp.errors }}
+                            <label for="{{ form.marley_gutter_dp.id_for_label }}">Marley Gutter / D.P</label>
+                            {{ form.marley_gutter_dp }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.roofing.errors }}
+                            <label for="{{ form.roofing.id_for_label }}">Roofing</label>
+                            {{ form.roofing }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.aluminium_joinery.errors }}
+                            <label for="{{ form.aluminium_joinery.id_for_label }}">Aluminium Joinery</label>
+                            {{ form.aluminium_joinery }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.pergola.errors }}
+                            <label for="{{ form.pergola.id_for_label }}">Pergola</label>
+                            {{ form.pergola }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.retaining_wall.errors }}
+                            <label for="{{ form.retaining_wall.id_for_label }}">Retaining Wall</label>
+                            {{ form.retaining_wall }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h4 class="text-center">Select the building zones for this building</h4>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.wind_zone.errors }}
+                            <label for="{{ form.wind_zone.id_for_label }}">Wind Zone</label>
+                            {{ form.wind_zone }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.corrosion_zone.errors }}
+                            <label for="{{ form.corrosion_zone.id_for_label }}">Corrosion Zone</label>
+                            {{ form.corrosion_zone }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h4 class="text-center">Note Products required for the following:</h4>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.interior_doors_notes.errors }}
+                            <label for="{{ form.interior_doors_notes.id_for_label }}">Interior Doors</label>
+                            {{ form.interior_doors_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.door_hardware_notes.errors }}
+                            <label for="{{ form.door_hardware_notes.id_for_label }}">Door Hardware</label>
+                            {{ form.door_hardware_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.scotia_notes.errors }}
+                            <label for="{{ form.scotia_notes.id_for_label }}">Scotia</label>
+                            {{ form.scotia_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.skirting_notes.errors }}
+                            <label for="{{ form.skirting_notes.id_for_label }}">Skirting</label>
+                            {{ form.skirting_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.architraves_notes.errors }}
+                            <label for="{{ form.architraves_notes.id_for_label }}">Architraves</label>
+                            {{ form.architraves_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.fascia_type_notes.errors }}
+                            <label for="{{ form.fascia_type_notes.id_for_label }}">Fascia type</label>
+                            {{ form.fascia_type_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.ceiling_batten_notes.errors }}
+                            <label for="{{ form.ceiling_batten_notes.id_for_label }}">Ceiling batten</label>
+                            {{ form.ceiling_batten_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.roof_material_notes.errors }}
+                            <label for="{{ form.roof_material_notes.id_for_label }}">Roof material</label>
+                            {{ form.roof_material_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.truss_penetrations_notes.errors }}
+                            <label for="{{ form.truss_penetrations_notes.id_for_label }}">Truss penetrations</label>
+                            {{ form.truss_penetrations_notes }}
+                        </div>
+                        <div class="fieldWrapper">
+                            {{ form.special_trusses_notes.errors }}
+                            <label for="{{ form.special_trusses_notes.id_for_label }}">Special Trusses</label>
+                            {{ form.special_trusses_notes }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h4 class="text-center">Note below alterations to plan supplied:</h4>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.alteration_notes.errors }}
+                            <label for="{{ form.alteration_notes.id_for_label }}">Alterations</label>
+                            {{ form.alteration_notes }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3> PLEASE NOTE: ALL INFORMATION GIVEN ON THIS FORM SUPERSEDES THAT ON THE PLAN.</h3>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <h4 class="text-center">Upload your plan files here. If you're not uploading a file, tick the
+                        box.</h4>
+                </div>
+                <div class="row">
+                    <div class="fieldWrapper">
+                        {{ form.plan_file.errors }}
+                        <label for="{{ form.plan_file.id_for_label }}">Plans</label>
+                        {{ form.plan_file }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="fieldWrapper">
+                        {{ form.engineer_plans_file.errors }}
+                        <label for="{{ form.engineer_plans_file.id_for_label }}">Engineer Plans</label>
+                        {{ form.engineer_plans_file }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="fieldWrapper">
+                        {{ form.window_door_plan_file.errors }}
+                        <label for="{{ form.window_door_plan_file.id_for_label }}">Window & Door Plans</label>
+                        {{ form.window_door_plan_file }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="fieldWrapper">
+                        {{ form.specification_file.errors }}
+                        <label for="{{ form.specification_file.id_for_label }}">Specifications</label>
+                        {{ form.specification_file }}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="fieldWrapper">
+                        {{ form.dwg_floor_plan_file.errors }}
+                        <label for="{{ form.dwg_floor_plan_file.id_for_label }}">DWG floor plan</label>
+                        {{ form.dwg_floor_plan_file }}
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h4 class="text-center">Information available in plans</h4>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.dimensioned_floor_on_plan.errors }}
+                            <label for="{{ form.dimensioned_floor_on_plan.id_for_label }}">Dimensioned floor
+                                plan</label>
+                            {{ form.dimensioned_floor_on_plan }}
+                        </div>
+
+                        <div class="fieldWrapper">
+                            {{ form.elevations_on_plan.errors }}
+                            <label for="{{ form.elevations_on_plan.id_for_label }}">Elevations</label>
+                            {{ form.elevations_on_plan }}
+                        </div>
+
+                        <div class="fieldWrapper">
+                            {{ form.cross_section_on_plan.errors }}
+                            <label for="{{ form.cross_section_on_plan.id_for_label }}">Cross-Section</label>
+                            {{ form.cross_section_on_plan }}
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="fieldWrapper">
+                            {{ form.roof_pitch_on_plan.errors }}
+                            <label for="{{ form.roof_pitch_on_plan.id_for_label }}">Roof Pitch</label>
+                            {{ form.roof_pitch_on_plan }}
+                        </div>
+
+                        <div class="fieldWrapper">
+                            {{ form.electrical_plan_on_plan.errors }}
+                            <label for="{{ form.electrical_plan_on_plan.id_for_label }}">Electrical plan</label>
+                            {{ form.electrical_plan_on_plan }}
+                        </div>
+
+                        <div class="fieldWrapper">
+                            {{ form.rafters_design_and_sizing_on_plan.errors }}
+                            <label for="{{ form.rafters_design_and_sizing_on_plan.id_for_label }}">Rafters design and
+                                sizing</label>
+                            {{ form.rafters_design_and_sizing_on_plan }}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button>Add Job</button>
+                </div>
+            </div>
         </form>
     {% else %}
         <h2>You need to log in to view this page</h2>
