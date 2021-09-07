@@ -8,7 +8,7 @@ from django.forms import TextInput, Textarea
 class RepForm(forms.ModelForm):
     class Meta:
         model = Rep
-        fields = ('bio', 'phone', 'entity')
+        fields = ('bio', 'phone', 'entity', 'image')
 
         widgets = {
             'bio': Textarea(attrs={'class': 'form-control'}),
@@ -19,7 +19,7 @@ class RepForm(forms.ModelForm):
 class SupplierForm(forms.ModelForm):
     class Meta:
         model = Supplier
-        fields = ('bio', 'phone')
+        fields = ('bio', 'phone', 'entity', 'image')
 
         widgets = {
             'bio': Textarea(attrs={'class': 'form-control'}),

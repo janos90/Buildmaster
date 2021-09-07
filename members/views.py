@@ -81,13 +81,13 @@ class DisplaySupplierView(DetailView):
 
 class EditRepView(UpdateView):
     model = Rep
-    template_name = 'registration/edit_rep_page.html'
-    fields = ['image', 'bio', 'facebook_url', 'website_url', 'pinterest_url', 'twitter_url', 'instagram_url']
-    success_url = reverse_lazy('login')
+    template_name = 'edit_rep_page.html'
+    fields = ['image', 'bio', 'phone']
+    success_url = reverse_lazy('home')
 
 
 class EditSupplierView(UpdateView):
     model = Supplier
-    template_name = 'registration/edit_supplier_page.html'
-    fields = ['image', 'bio', 'facebook_url', 'website_url', 'pinterest_url', 'twitter_url', 'instagram_url']
-    success_url = reverse_lazy('login')
+    template_name = 'edit_supplier_page.html'
+    fields = ['image', 'bio', 'phone']
+    success_url = reverse_lazy('home')
