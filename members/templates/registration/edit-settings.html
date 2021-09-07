@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Settings{% endblock %}
+<br /><br />
+<br /><br />
+{% block content %}
+    {{ user.profile.bio }}
+
+    {% if user.is_authenticated %}
+        <h1>Edit profile for {{ user.username }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Update Profile</button>
+        </form>
+    {% else %}
+
+    {% endif %}
+
+{% endblock %}

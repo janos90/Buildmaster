@@ -8,7 +8,7 @@ from django.forms import TextInput, Textarea
 class RepForm(forms.ModelForm):
     class Meta:
         model = Rep
-        fields = ('bio', 'phone')
+        fields = ('bio', 'phone', 'entity')
 
         widgets = {
             'bio': Textarea(attrs={'class': 'form-control'}),

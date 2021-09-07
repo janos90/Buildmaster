@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile for {{ page_user.user.first_name }} {{ page_user.user.last_name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ page_user.user.first_name }} {{ page_user.user.last_name }}</h1>
+    <br /><br />
+    <br /><br />
+                {% if page_user.image %}
+                    <img src="{{ page_user.image.url }}" class="img-fluid rounded-start"
+                         alt="Picture of {{ page_user.user.first_name }} {{ page_user.user.last_name }}" style="max-width: 200px;
+                         max-height: 200px">
+                {% else %}
+                    <img src="{% static 'buildmaster/images/default_profile.png' %}" class="img-fluid rounded-start"
+                         alt="No profile picture added" style="max-width: 200px;
+                         max-height: 200px">
+                {% endif %}
+    <p>{{ page_user.bio|safe }}</p>
+{% endblock %}

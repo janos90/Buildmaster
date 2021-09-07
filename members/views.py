@@ -81,7 +81,7 @@ class DisplaySupplierView(DetailView):
 
 class EditRepView(UpdateView):
     model = Rep
-    template_name = 'registration/edit_profile_page.html'
+    template_name = 'registration/edit_rep_page.html'
     fields = ['image', 'bio', 'facebook_url', 'website_url', 'pinterest_url', 'twitter_url', 'instagram_url']
     success_url = reverse_lazy('login')
 

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Supplier Profile Page{% endblock %}
+
+{% block content %}
+    <h1>Edit Supplier Profile Page</h1>
+    {% if user.is_authenticated %}
+        {% if user.id == supplier.user.id %}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button>Update Supplier Profile</button>
+            </form>
+        {% else %}
+            <h2>Only the owner may edit their profile</h2>
+        {% endif %}
+    {% else %}
+        <h2>You need to log in to view this page</h2>
+    {% endif %}
+{% endblock %}

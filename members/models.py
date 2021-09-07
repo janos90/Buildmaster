@@ -4,6 +4,9 @@ from ckeditor.fields import RichTextField
 
 
 # Create your models here.
+from django.urls import reverse
+
+
 class Entity(models.Model):
     parent = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
@@ -26,6 +29,10 @@ class Rep(models.Model):
 
     def __str__(self):
         return self.user.get_full_name() + " " + self.entity.name
+
+    def get_absolute_url(self):
+        return reverse('home')
+
 
 
 class Supplier(models.Model):

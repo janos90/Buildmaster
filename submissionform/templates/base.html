@@ -47,7 +47,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'settings' %}">Edit Settings</a></li>
                             {% if user.rep %}
-                                <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.rep.id %}">Edit My Rep Page</a></li>
+                                <li><a class="dropdown-item" href="{% url 'edit_rep_profile' user.rep.id %}">Edit My Rep Page</a></li>
                                 <li><a class="dropdown-item" href="{% url 'show_rep_profile' user.rep.id %}">Show My Rep Page</a></li>
                             {% else %}
                                 {% if user.supplier %}
