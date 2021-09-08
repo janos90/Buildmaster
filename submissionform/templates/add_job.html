@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Add Activity{% endblock %}
+{% block title %}Add Job{% endblock %}
 
 {% block content %}
     <h1 class="text-center">Add Job</h1>
     {% if user.is_authenticated %}
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -70,11 +73,6 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="fieldWrapper">
-                                        {{ form.rep.errors }}
-                                        <label for="{{ form.rep.id_for_label }}">Rep:</label>
-                                        {{ form.rep }}
-                                    </div>
                                     <div class="fieldWrapper">
                                         {{ form.logged_date.errors }}
                                         <label for="{{ form.logged_date.id_for_label }}">Logged date:</label>
@@ -571,10 +569,8 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <button type="button" class="btn btn-primary btn-lg">Add Job</button>
-                </div>
             </div>
+            <input type="submit" value="Submit">
         </form>
     {% else %}
         <h2>You need to log in to view this page</h2>

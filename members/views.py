@@ -43,6 +43,7 @@ class CreateRepView(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class CreateSupplierView(CreateView):
     model = Supplier
     form_class = SupplierForm

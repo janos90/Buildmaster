@@ -1,10 +1,15 @@
+import logging
+
 from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from submissionform.forms import JobForm
 from submissionform.models import Job
+
+logger = logging.getLogger(__name__)
 
 
 class JobListView(ListView):
@@ -20,7 +25,16 @@ class JobDetailView(DetailView):
 class CreateJobView(CreateView):
     model = Job
     template_name = 'add_job.html'
-    fields = '__all__'
+    form_class = JobForm
+
+    def form_valid(self, form):
+        form.instance.rep = self.request.user.rep
+        logger.error('form validated!')
+        form.save()
+
+        return super().form_valid(form)
+
+    success_url = reverse_lazy('home')
 
 
 class UpdateJobView(UpdateView):

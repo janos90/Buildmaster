@@ -12,20 +12,19 @@ class Job(models.Model):
     creation_date = models.DateField(auto_now_add=True)
 
     # Office use info
-    frame_truss_margin = models.CharField(max_length=255)
-    discount_group = models.CharField(max_length=255)
-    reason = models.CharField(max_length=255)
+    frame_truss_margin = models.CharField(max_length=255, null=True, blank=True)
+    discount_group = models.CharField(max_length=255, null=True, blank=True)
+    reason = models.CharField(max_length=255, null=True, blank=True)
 
     # job info
     job_name = models.CharField(max_length=255)
     job_company = models.CharField(max_length=255)
-    pre_nail_date = models.DateField()
+    pre_nail_date = models.DateField(null=True, blank=True)
     site_address = models.TextField()
-    job_location = models.TextField()
 
     JOB_LOCATIONS = [
 
-        ('AUc', 'Auckland'),
+        ('AUC', 'Auckland'),
         ('WAI', 'Waikato'),
     ]
 
@@ -37,16 +36,16 @@ class Job(models.Model):
 
     # Client info
     client_name = models.CharField(max_length=255)
-    client_phone = models.CharField(max_length=255)
-    client_mobile = models.CharField(max_length=255)
+    client_phone = models.CharField(max_length=255, null=True, blank=True)
+    client_mobile = models.CharField(max_length=255, null=True, blank=True)
     rep = models.ForeignKey(Rep, on_delete=models.CASCADE)
     logged_date = models.DateField()
     client_address = models.TextField()
-    client_email = models.EmailField()
+    client_email = models.EmailField(null=True, blank=True)
 
     # Detailer info
-    detailer_name = models.CharField(max_length=255)
-    detailer_contact_number = models.CharField(max_length=255)
+    detailer_name = models.CharField(max_length=255, null=True, blank=True)
+    detailer_contact_number = models.CharField(max_length=255, null=True, blank=True)
 
     # email list info
     email_skip = models.BooleanField(default=False)
@@ -120,18 +119,18 @@ class Job(models.Model):
     )
 
     # Note product required for the following
-    interior_doors_notes = models.CharField(max_length=255, default='')
-    door_hardware_notes = models.CharField(max_length=255, default='')
-    scotia_notes = models.CharField(max_length=255, default='')
-    skirting_notes = models.CharField(max_length=255, default='')
-    architraves_notes = models.CharField(max_length=255, default='')
-    fascia_type_notes = models.CharField(max_length=255, default='')
-    ceiling_batten_notes = models.CharField(max_length=255, default='')
-    roof_material_notes = models.CharField(max_length=255, default='')
-    truss_penetrations_notes = models.CharField(max_length=255, default='')
-    special_trusses_notes = models.CharField(max_length=255, default='')
+    interior_doors_notes = models.CharField(max_length=255, null=True, blank=True)
+    door_hardware_notes = models.CharField(max_length=255, null=True, blank=True)
+    scotia_notes = models.CharField(max_length=255, null=True, blank=True)
+    skirting_notes = models.CharField(max_length=255, null=True, blank=True)
+    architraves_notes = models.CharField(max_length=255, null=True, blank=True)
+    fascia_type_notes = models.CharField(max_length=255, null=True, blank=True)
+    ceiling_batten_notes = models.CharField(max_length=255, null=True, blank=True)
+    roof_material_notes = models.CharField(max_length=255, null=True, blank=True)
+    truss_penetrations_notes = models.CharField(max_length=255, null=True, blank=True)
+    special_trusses_notes = models.CharField(max_length=255, null=True, blank=True)
 
-    alteration_notes = models.TextField()
+    alteration_notes = models.TextField(null=True, blank=True)
 
     # file uploads
     plan_file = models.FileField(null=True, blank=True, upload_to="jobs/dog-profiles")
@@ -152,4 +151,5 @@ class Job(models.Model):
         return self.name + " " + self.rep.user.get_full_name()
 
     def get_absolute_url(self):
-        return reverse('job-detail', args=(str(self.id)))
+        # return reverse('job-detail', args=str(self.id))
+        return reverse('home')
