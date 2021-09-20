@@ -21,30 +21,30 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'job-list' %}">Jobs</a>
+        <a class="navbar-brand" href="https://www.thomsonsitm.co.nz/">
+            <img src="https://www.thomsonsitm.co.nz/themes/ThomsonsITM/images/logo.png"> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {%  if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Jobs
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'job-list' %}">All Jobs</a></li>
-                            <li><a class="dropdown-item" href="{% url 'job-create' %}">Add Jobs</a></li>
-                        </ul>
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="{% url 'job-list' %}">All Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href={% url 'logout' %}>Logout</a>
+                        <a class="nav-link" href="{% url 'job-create' %}">Add Jobs</a>
                     </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                {%  if user.is_authenticated %}
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Profile
+                            {{ user.first_name }} {{ user.last_name }}
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'settings' %}">Edit Settings</a></li>
                             {% if user.rep %}
                                 <li><a class="dropdown-item" href="{% url 'edit_rep_profile' user.rep.id %}">Edit My Rep Page</a></li>
@@ -58,6 +58,10 @@
                                     <li><a class="dropdown-item" href="{% url 'create_supplier' %}">Create Supplier Profile</a></li>
                                 {% endif %}
                             {% endif %}
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href={% url 'logout' %}>Logout</a></li>
                         </ul>
                     </li>
 
@@ -69,27 +73,7 @@
                         <a class="nav-link" href={% url 'login' %}>Login</a>
                     </li>
                 {% endif %}
-
-
-                {#            <li class="nav-item dropdown">#}
-                {#              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">#}
-                {#                Dropdown#}
-                {#              </a>#}
-                {#              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">#}
-                {#                <li><a class="dropdown-item" href="#">Action</a></li>#}
-                {#                <li><a class="dropdown-item" href="#">Another action</a></li>#}
-                {#                <li><hr class="dropdown-divider"></li>#}
-                {#                <li><a class="dropdown-item" href="#">Something else here</a></li>#}
-                {#              </ul>#}
-                {#            </li>#}
-                {#            <li class="nav-item">#}
-                {#              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>#}
-                {#            </li>#}
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>

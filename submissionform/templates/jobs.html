@@ -8,7 +8,7 @@
             {%  for job in object_list %}
                 <li>
                     <a href="{% url 'job-detail' job.pk %}">
-                        {{  job.name }}
+                        {{  job.job_name }}
                     </a>
                     - {{ job.rep.user.first_name }} {{ job.rep.user.last_name }}
                     - <a href="{% url 'job-update' job.pk %}" class="btn btn-secondary">Edit</a>
